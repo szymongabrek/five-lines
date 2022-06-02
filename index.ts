@@ -23,6 +23,8 @@ interface Input {
   isLeft(): boolean;
   isUp(): boolean;
   isDown(): boolean;
+  handle(): void;
+
 }
 
 class Right implements Input {
@@ -30,16 +32,9 @@ class Right implements Input {
   isLeft() { return false; }     
   isUp() { return false; }       
   isDown() { return false; }   
-  handleInput(input: Input) {
-    if (false)
-      moveHorizontal(-1);
-    else if (true)
-      moveHorizontal(1);
-    else if (false)
-      moveVertical(-1);
-    else if (false)
-      moveVertical(1);
-  }  
+  handle() {
+    moveHorizontal(1);
+  }
 }
 
 class Left implements Input {
@@ -47,15 +42,8 @@ class Left implements Input {
   isLeft() { return true; }     
   isUp() { return false; }       
   isDown() { return false; }
-  handleInput(input: Input) {
-    if (true)
-      moveHorizontal(-1);
-    else if (false)
-      moveHorizontal(1);
-    else if (false)
-      moveVertical(-1);
-    else if (false)
-      moveVertical(1);
+  handle() {
+    moveHorizontal(-1);
   }   
 }
 
@@ -64,15 +52,8 @@ class Down implements Input {
   isLeft() { return false; }     
   isUp() { return false; }       
   isDown() { return true; }
-  handleInput(input: Input) {
-    if (false)
-      moveHorizontal(-1);
-    else if (false)
-      moveHorizontal(1);
-    else if (false)
-      moveVertical(-1);
-    else if (true)
-      moveVertical(1);
+  handle() {
+    moveVertical(1);
   }     
 }
 
@@ -81,15 +62,8 @@ class Up implements Input {
   isLeft() { return false; }     
   isUp() { return true; }       
   isDown() { return false; } 
-  handleInput(input: Input) {
-    if (false)
-      moveHorizontal(-1);
-    else if (false)
-      moveHorizontal(1);
-    else if (true)
-      moveVertical(-1);
-    else if (false)
-      moveVertical(1);
+  handle() {
+    moveVertical(-1);
   }     
 }
 
