@@ -112,16 +112,24 @@ function update() {
   }
 }
 
-function draw() {
+function createSurface() {
   let canvas = document.getElementById("GameCanvas") as HTMLCanvasElement;
   let g = canvas.getContext("2d");
 
   g.clearRect(0, 0, canvas.width, canvas.height);
+  return g;
 
-  // Draw map
-  for (let y = 0; y < map.length; y++) {
-    for (let x = 0; x < map[y].length; x++) {
-      if (map[y][x] === Tile.FLUX)
+}
+
+function draw() {
+  const g = createSurface()
+  drawMap(g);
+  drawPlayer(g);
+ 
+}
+
+function colorOfTile(g:CanvasRenderingContext2D, x: number, y: number) {
+   if (map[y][x] === Tile.FLUX)
         g.fillStyle = "#ccffcc";
       else if (map[y][x] === Tile.UNBREAKABLE)
         g.fillStyle = "#999999";
@@ -132,14 +140,24 @@ function draw() {
       else if (map[y][x] === Tile.KEY1 || map[y][x] === Tile.LOCK1)
         g.fillStyle = "#ffcc00";
       else if (map[y][x] === Tile.KEY2 || map[y][x] === Tile.LOCK2)
-        g.fillStyle = "#00ccff";
+        g.fillStyle = "#00ccff";    
+}
 
-      if (map[y][x] !== Tile.AIR && map[y][x] !== Tile.PLAYER)
-        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+function drawTile(g:CanvasRenderingContext2D, x: number, y: number) {
+  if (map[y][x] !== Tile.AIR && map[y][x] !== Tile.PLAYER)
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+}
+
+function drawMap(g: CanvasRenderingContext2D){
+  for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
+      colorOfTile(g,x,y);
+      drawTile(g, x, y);
     }
   }
+}
 
-  // Draw player
+function drawPlayer(g: CanvasRenderingContext2D){
   g.fillStyle = "#ff0000";
   g.fillRect(playerx * TILE_SIZE, playery * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 }
