@@ -31,13 +31,13 @@ class Right implements Input {
   isUp() { return false; }       
   isDown() { return false; }   
   handleInput(input: Input) {
-    if (input.isLeft())
+    if (false)
       moveHorizontal(-1);
-    else if (input.isRight())
+    else if (true)
       moveHorizontal(1);
-    else if (input.isUp())
+    else if (false)
       moveVertical(-1);
-    else if (input.isDown())
+    else if (false)
       moveVertical(1);
   }  
 }
@@ -48,13 +48,13 @@ class Left implements Input {
   isUp() { return false; }       
   isDown() { return false; }
   handleInput(input: Input) {
-    if (input.isLeft())
+    if (true)
       moveHorizontal(-1);
-    else if (input.isRight())
+    else if (false)
       moveHorizontal(1);
-    else if (input.isUp())
+    else if (false)
       moveVertical(-1);
-    else if (input.isDown())
+    else if (false)
       moveVertical(1);
   }   
 }
@@ -65,13 +65,13 @@ class Down implements Input {
   isUp() { return false; }       
   isDown() { return true; }
   handleInput(input: Input) {
-    if (input.isLeft())
+    if (false)
       moveHorizontal(-1);
-    else if (input.isRight())
+    else if (false)
       moveHorizontal(1);
-    else if (input.isUp())
+    else if (false)
       moveVertical(-1);
-    else if (input.isDown())
+    else if (true)
       moveVertical(1);
   }     
 }
@@ -82,13 +82,13 @@ class Up implements Input {
   isUp() { return true; }       
   isDown() { return false; } 
   handleInput(input: Input) {
-    if (input.isLeft())
+    if (false)
       moveHorizontal(-1);
-    else if (input.isRight())
+    else if (false)
       moveHorizontal(1);
-    else if (input.isUp())
+    else if (true)
       moveVertical(-1);
-    else if (input.isDown())
+    else if (false)
       moveVertical(1);
   }     
 }
